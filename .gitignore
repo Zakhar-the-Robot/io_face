@@ -1,0 +1,7 @@
+.vscode
+firmware/.vscode
+firmware/.cache
+
+# build artifacts
+firmware/build/
+firmware/sdkconfig

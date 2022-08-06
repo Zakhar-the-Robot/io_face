@@ -1,0 +1,41 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+        {
+            "path": "..",
+            "name": "Root"
+        }
+    ],
+    "settings": {
+        "terminal.integrated.profiles.windows": {
+            "esp-idf@pwsh": {
+              "source": "PowerShell",
+              "args": ["-NoProfile",
+                       "-NoExit",
+                       "-c",
+                       ". $env:IDF_PATH\\export.ps1"
+                        ]
+            }
+        },
+        "files.associations": {
+            "*.html": "html",
+            "*.inc": "innopascal",
+            "*.log": "log",
+            "*.rst": "restructuredtext",
+            "*.txt": "Log",
+            "pretty_effect.h": "c",
+            "images.h": "c",
+            "chrono": "cpp",
+            "iterator": "cpp",
+            "xloctime": "cpp",
+            "charconv": "c",
+            "array": "cpp",
+            "vector": "cpp",
+            "xstring": "cpp",
+            "xutility": "cpp"
+        },
+
+    }
+}

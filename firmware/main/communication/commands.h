@@ -1,6 +1,6 @@
 // *************************************************************************
 //
-// Copyright (c) 2020 Andrei Gramakov. All rights reserved.
+// Copyright (c) 2022 Andrei Gramakov. All rights reserved.
 //
 // This file is licensed under the terms of the MIT license.
 // For a copy, see: https://opensource.org/licenses/MIT
@@ -10,11 +10,18 @@
 //
 // *************************************************************************
 
-#include "ControlCallbacks.h"
+#pragma once
 
-#define SIZE_ARR(x) (sizeof(x) / sizeof(x[0]))
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-extern int cmd;
-extern Connection_t connection[5];
-extern ControlCallbacks Cc;
-void control_poll();
+#define CMD_CALM 0x30
+#define CMD_BLINK 0x31
+#define CMD_ANGRY 0x32
+#define CMD_HAPPY 0x33
+#define CMD_SAD 0x34
+
+#ifdef __cplusplus
+}
+#endif
