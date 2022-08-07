@@ -4,3 +4,6 @@
 [submodule "firmware/components/lib_zakhar_faces"]
 	path = firmware/components/lib_zakhar_faces
 	url = https://github.com/Zakhar-the-Robot/lib_zakhar_faces.git
+[submodule "schematic/lib_kicad"]
+	path = schematic/lib_kicad
+	url = https://github.com/Zakhar-the-Robot/lib_kicad.git
