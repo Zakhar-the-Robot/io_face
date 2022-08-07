@@ -5,3 +5,6 @@ firmware/.cache
 # build artifacts
 firmware/build/
 firmware/sdkconfig
+
+# kicad backups
+schematic/io_face/io_face-backups
