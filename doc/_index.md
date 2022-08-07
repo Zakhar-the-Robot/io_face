@@ -1,7 +1,8 @@
 ---
-title: "IO: Face Unit"
+title: "Face Unit"
 ---
 
+# Face Unit
 
 [![view - Documentation](https://img.shields.io/badge/Source%20Code-GitHub-blue)](https://github.com/Zakhar-the-Robot/io_face "Go to repository")
 
@@ -12,7 +13,7 @@ The Face unit consists of two modules:
 
 The Unit can display a set of face expression by a command via the qCAN protocol. Each facial expression is defined by a jpg file:
 
-<img src="index\faces.png" alt="platform_schematic" width="800">
+<img src="faces.png" alt="schematic" width="800">
 
 (see [lib_zakhar_faces](https://github.com/Zakhar-the-Robot/lib_zakhar_faces) for the sources)
 
@@ -35,4 +36,4 @@ Each command should consists of a single byte
 
 ## Schematic
 
-<img src="index\io_face.svg" alt="platform_schematic" width="800">
+<img src="io_face.svg" alt="platform_schematic" width="800">
