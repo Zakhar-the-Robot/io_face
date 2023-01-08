@@ -15,6 +15,10 @@
 #include "driver/gpio.h"
 #include "esp_system.h"
 
+/* Servo Ears*/
+#define PIN_EAR_LEFT    GPIO_NUM_26
+#define PIN_EAR_RIGHT   GPIO_NUM_12
+
 /* CAN */
 #define PIN_CANBUS_TX_ON_MODULE GPIO_NUM_27  // WARM/LIGHT COLOR and GREEN
 #define PIN_CANBUS_RX_ON_MODULE GPIO_NUM_14  // COLD/DARK COLOR (e.g. BLUE)

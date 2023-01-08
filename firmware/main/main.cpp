@@ -25,6 +25,10 @@
 #include "display/lcd.hpp"
 #include "faces.h"
 
+
+#include "servo/ears.cpp"
+
+
 extern "C" void app_main()
 {
     esp_log_level_set("CAN", ESP_LOG_DEBUG);
@@ -36,6 +40,7 @@ extern "C" void app_main()
     send_image(dev_lcdSpi, BLINK_JPG);
     vTaskDelay(500 / portTICK_RATE_MS);
     send_image(dev_lcdSpi, HAPPY_JPG);
+    manualServo();
     vTaskDelay(500 / portTICK_RATE_MS);
     send_image(dev_lcdSpi, SAD_JPG);
     vTaskDelay(500 / portTICK_RATE_MS);
