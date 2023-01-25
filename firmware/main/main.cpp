@@ -39,8 +39,8 @@ extern "C" void app_main()
     //Go do nice stuff.
     send_image(dev_lcdSpi, BLINK_JPG);
     vTaskDelay(500 / portTICK_RATE_MS);
-    send_image(dev_lcdSpi, HAPPY_JPG);
     manualServo();
+    send_image(dev_lcdSpi, HAPPY_JPG);
     vTaskDelay(500 / portTICK_RATE_MS);
     send_image(dev_lcdSpi, SAD_JPG);
     vTaskDelay(500 / portTICK_RATE_MS);
