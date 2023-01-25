@@ -18,6 +18,8 @@
 #include <freertos/task.h>
 #include "pinout.hpp"
 
+// #include "servo.cpp"
+
 #define pinServo PIN_EAR_RIGHT
 #define ServoMsMin 0.06
 #define ServoMsMax 2.1
@@ -26,7 +28,7 @@
 int degToDuty(uint32_t deg, const uint32_t maxServoDeg, double servoMin_ms, double servoMax_ms)
 {
     if (deg > maxServoDeg) { deg = maxServoDeg; }
-    double k = (double)deg / maxServoDeg;
+    double k = (double) deg / maxServoDeg;
     double servo_ms;
     switch (deg) {
         case 0:
@@ -39,9 +41,9 @@ int degToDuty(uint32_t deg, const uint32_t maxServoDeg, double servoMin_ms, doub
             servo_ms = k * (servoMax_ms - servoMin_ms);
             break;
     }
-    int duty     = (int) (100.0 * (servo_ms / 20.0) * 81.91);
+    int duty = (int) (100.0 * (servo_ms / 20.0) * 81.91);
     printf("k: %f, servo_ms: %f, duty = %d\n", k, servo_ms, duty);
-        
+
     return duty;
 }
 
@@ -60,6 +62,7 @@ void setServo(int pin, uint8_t deg)
                                            .timer_sel  = LEDC_TIMER_0,
                                            .duty       = 0,
                                            .hpoint     = 0 };
+    printf("Pin: %d, %dº\n", pin, deg);
     ledc_channel_config(&ledc_channel);
     int duty = degToDuty(deg, 180, ServoMsMin, ServoMsMax);
     ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, duty);
@@ -133,10 +136,11 @@ void servoDeg90()
                                            .hpoint     = 0 };
     ledc_channel_config(&ledc_channel);
     int duty = (int) (100.0 * (ServoMsAvg / 20.0) * 81.91);
-    printf("%fms, duty = %f%% -> %d\n", ServoMsAvg, 100.0 * (ServoMsAvg / 20.0), duty);
+    printf("(servoDeg90) servo_ms: %f, duty = %d\n", ServoMsAvg, duty);
+    
+    // printf("%fms, duty = %f%% -> %d\n", ServoMsAvg, 100.0 * (ServoMsAvg / 20.0), duty);
     ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, duty);
     ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
-    vTaskDelay(500 / portTICK_PERIOD_MS);
     ledc_stop(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 0);
 }
 
@@ -164,26 +168,28 @@ void servoDeg180()
     ledc_stop(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 0);
 }
 
+
 void manualServo()
 {
+    // ServoMotor servo_r(PIN_EAR_RIGHT,   LEDC_CHANNEL_0);
+    // ServoMotor servo_l(PIN_EAR_LEFT,    LEDC_CHANNEL_1);
     // servoDeg180();
-    
-    setServo(PIN_EAR_LEFT, 180);
-    setServo(PIN_EAR_RIGHT, 0);
-    
-    vTaskDelay(2000 / portTICK_PERIOD_MS);
-    
-    setServo(PIN_EAR_LEFT,45);
+
+    // setServo(PIN_EAR_LEFT, 160);
+    setServo(PIN_EAR_RIGHT, 160);
+
+    vTaskDelay(100 / portTICK_PERIOD_MS);
+
+    // setServo(PIN_EAR_LEFT,45);
     setServo(PIN_EAR_RIGHT, 45);
-    
-    vTaskDelay(2000 / portTICK_PERIOD_MS);
-    
-    servoDeg90();
-    setServo(PIN_EAR_LEFT,90);
+
+    vTaskDelay(100 / portTICK_PERIOD_MS);
+
+    // setServo(PIN_EAR_LEFT,90);
     setServo(PIN_EAR_RIGHT, 90);
-    
-    vTaskDelay(2000 / portTICK_PERIOD_MS);
-    
-    setServo(PIN_EAR_LEFT,0);
+
+    vTaskDelay(100 / portTICK_PERIOD_MS);
+
+    // setServo(PIN_EAR_LEFT,0);
     setServo(PIN_EAR_RIGHT, 0);
 }
